@@ -105,6 +105,7 @@ To view the suggested objects in the intended html, say `blog_detail.html`, you 
 	{{ suggestions.visited_before_object }}
 {% endfor %}
 ```
+
 The `visited_before_object` would be the suggested blog post and you can call any attribute you want from that object, for example:
 
 ```python
