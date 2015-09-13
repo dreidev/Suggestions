@@ -9,6 +9,18 @@
 > Suggestions can be added to any model's page in your application and it can help a user to discover other related pages they might find interesting based on what other users have viewed.
 
 
+##Example
+Let's say you have a model called Blog and you would like to add the suggestions functionality to it so users can find related blog posts when viewing any other blog post.
+
+Consider this scenario:
+
+1. User1 visits blog post (a)
+2. User1 visits blog post (b)
+3. User2 visits blog post (b)
+
+Now User2 will get a suggestion to visit blog post (a), this is due to the fact that some other user who visited (b) was interested in another blog post which is (a).
+
+
 ##Installation
 
 Installation is available via `pip`
@@ -57,28 +69,17 @@ $ python manage.py migrate suggestions
 ##Setup
 
 ###Step 1
-In your models.py add the field comments to the model for which comments should be added (e.g. Blog) and the appropriate imports as shown below
+
 
 ```python
-from django.contrib.contenttypes.fields import GenericRelation
-from comments.models import Comment
 
-class Blog(models.Model):
-	author = models.ForeignKey(User)
-	title = models.CharField(max_length=256)
-	body = models.TextField()
-	comments = GenericRelation(Comment)
 ```
 
 ###Step 2
-In your template (e.g. blog-detail.html) add the following template tags where object is the instance of blog.
+
 
 ```python
-{% load comments_tags %}  # Loading the template tag
-{% get_comments object request.user %}  # Include all the comments belonging to a certain object
-{% comment_form object request.user %}  # Include the form for adding comments
-{% get_comment_count object %}  # Include the number of comments on a certain object
+
 ```
-The last template tag `{% get_comment_count object %}` is already included in `{% get_comments %}`, however you could include it seperately anywhere you want.
 
 ---
