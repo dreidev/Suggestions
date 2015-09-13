@@ -102,13 +102,13 @@ To view the suggested objects in the intended html, say `blog_detail.html`, you 
 
 ```python
 {% for suggestion in suggestions %}
-	{{ suggestions.visited_before_object }}
+	{{ suggestion.visited_before_object }}
 {% endfor %}
 ```
 
 The `visited_before_object` would be the suggested blog post and you can call any attribute you want from that object, for example:
 
 ```python
-	{{ suggestions.visited_before_object.title }}
+{{ suggestions.visited_before_object.title }}
 ```
 ---
