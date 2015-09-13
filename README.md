@@ -85,8 +85,8 @@ update_suggestions_dictionary(request, self.object)
 suggestions = get_suggestions(self.object)
 ```
 
-*The `self.object` is for example the blog post object.
-*You'll need to either add the suggestions to the context dictionary or return it.
+* The `self.object` is for example the blog post object.
+* You'll need to either add the suggestions to the context dictionary or return it.
 
 #####For `ClassBasedViews`:
 You'll need to do this in the `DetailView` of say, model Blog, either in the `get` or `get_context_data` method.
