@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, url
-from test_app.views import DummyDetailView, SecondDummyDetailView
+from dummy_app.views import DummyDetailView, SecondDummyDetailView
 
 urlpatterns = patterns(
     '',

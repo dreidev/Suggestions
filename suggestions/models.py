@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import (
     GenericForeignKey)
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericRelation
 
 
 class ObjectView(models.Model):
@@ -32,3 +33,15 @@ class ObjectViewDictionary(models.Model):
         'visited_before_content_type', 'visited_before_object_id')
 
     visits = models.IntegerField(default=1)
+
+
+class DummyModel(models.Model):
+    name = models.CharField(max_length=100)
+    suggestions = GenericRelation(ObjectViewDictionary)
+    view = GenericRelation(ObjectView)
+
+
+class SecondDummyModel(models.Model):
+    name = models.CharField(max_length=100)
+    suggestions = GenericRelation(ObjectViewDictionary)
+    view = GenericRelation(ObjectView)
