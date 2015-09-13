@@ -1,5 +1,8 @@
 #`django-suggestions` Suggestions
 
+[![Build Status](https://travis-ci.org/dreidev/Suggestions.svg?branch=ReadMe)](https://travis-ci.org/dreidev/Suggestions)
+
+[![Coverage Status](https://coveralls.io/repos/dreidev/Suggestions/badge.svg?branch=HEAD&service=github)](https://coveralls.io/github/dreidev/Suggestions?branch=HEAD)
 
 `django-suggestions` is a suggestions application for Django-powered websites.
 
