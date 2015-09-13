@@ -6,7 +6,7 @@
 
 `django-suggestions` is a suggestions application for Django-powered websites.
 
-> Suggestions can be added to any model's page in your application > and it can help users to discover other related pages they might > find interesting based on what other users have viewed.
+> Suggestions can be added to any model's page in your application and it can help a user to discover other related pages they might find interesting based on what other users have viewed.
 
 
 ##Installation
