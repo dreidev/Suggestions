@@ -1,12 +1,12 @@
 from django.views.generic import DetailView
-from test_app.models import DummyModel, SecondDummyModel
+from .models import DummyModel, SecondDummyModel
 from suggestions.views import update_suggestions_dictionary, get_suggestions
 from django.contrib.auth import authenticate, login
 
 
 class DummyDetailView(DetailView):
     model = DummyModel
-    template_name = 'test_app/dummy.html'
+    template_name = 'dummy_app/dummy.html'
 
     def get_context_data(self, **kwargs):
         user = authenticate(username='user', password='pass')
@@ -20,7 +20,7 @@ class DummyDetailView(DetailView):
 
 class SecondDummyDetailView(DetailView):
     model = SecondDummyModel
-    template_name = 'test_app/dummy.html'
+    template_name = 'dummy_app/dummy.html'
 
     def get_context_data(self, **kwargs):
         user = authenticate(username='user', password='pass')

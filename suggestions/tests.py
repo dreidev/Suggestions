@@ -1,5 +1,5 @@
 from django.test import TestCase, Client
-from test_app.models import DummyModel, SecondDummyModel
+from dummy_app.models import DummyModel, SecondDummyModel
 from .models import ObjectView, ObjectViewDictionary
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User

@@ -24,6 +24,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_nose',
     'suggestions',
+    'dummy_app',
 )
 
 MIDDLEWARE_CLASSES = (
