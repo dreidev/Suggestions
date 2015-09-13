@@ -1,5 +1,5 @@
 from django.views.generic import DetailView
-from .models import DummyModel, SecondDummyModel
+from suggestions.models import DummyModel, SecondDummyModel
 from suggestions.views import update_suggestions_dictionary, get_suggestions
 from django.contrib.auth import authenticate, login
 
