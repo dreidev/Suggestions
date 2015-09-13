@@ -14,6 +14,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='DummyModel',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
+            ],
+        ),
+        migrations.CreateModel(
             name='ObjectView',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -31,6 +38,13 @@ class Migration(migrations.Migration):
                 ('visits', models.IntegerField(default=1)),
                 ('current_content_type', models.ForeignKey(related_name='current_obj', to='contenttypes.ContentType', null=True)),
                 ('visited_before_content_type', models.ForeignKey(to='contenttypes.ContentType', null=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='SecondDummyModel',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=100)),
             ],
         ),
     ]

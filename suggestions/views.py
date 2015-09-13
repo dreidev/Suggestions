@@ -42,15 +42,21 @@ def update_suggestions_dictionary(request, object):
 
 def get_suggestions_with_size(object, size):
     """ Gets a list with a certain size of suggestions for an object """
+    content_type = ContentType.objects.get_for_model(type(object))
     try:
         return ObjectViewDictionary.objects.filter(
-            current_object=object).extra(order_by=['-visits'])[:size]
+            current_object_id=object.id,
+            current_content_type=content_type).extra(
+            order_by=['-visits'])[:size]
     except:
         return ObjectViewDictionary.objects.filter(
-            current_object=object).extra(order_by=['-visits'])
+            current_object_id=object.id,
+            current_content_type=content_type).extra(order_by=['-visits'])
 
 
 def get_suggestions(object):
     """ Gets a list of all suggestions for an object """
+    content_type = ContentType.objects.get_for_model(type(object))
     return ObjectViewDictionary.objects.filter(
-        current_object=object).extra(order_by=['-visits'])
+        current_object_id=object.id,
+        current_content_type=content_type).extra(order_by=['-visits'])
