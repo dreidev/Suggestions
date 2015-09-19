@@ -96,4 +96,19 @@ You'll need to do this in the `DetailView` of say, model Blog, either in the `ge
 #####For `FunctionBasedViews`:
 Do this in the function responsible for rendering the template where you view the details of a certain Blog post.
 
+
+###Step 3
+To view the suggested objects in the intended html, say `blog_detail.html`, you can do the following:
+
+```python
+{% for suggestion in suggestions %}
+	{{ suggestion.visited_before_object }}
+{% endfor %}
+```
+
+The `visited_before_object` would be the suggested blog post and you can call any attribute you want from that object, for example:
+
+```python
+{{ suggestion.visited_before_object.title }}
+```
 ---
