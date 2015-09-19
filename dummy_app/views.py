@@ -9,7 +9,8 @@ class DummyDetailView(DetailView):
     template_name = 'dummy_app/dummy.html'
 
     def get_context_data(self, **kwargs):
-        user = authenticate(username='user', password='pass')
+        user = authenticate(username='rana', password='pass')
+        print user
         if user is not None:
             login(self.request, user)
         context = super(DummyDetailView, self).get_context_data(**kwargs)
@@ -20,10 +21,10 @@ class DummyDetailView(DetailView):
 
 class SecondDummyDetailView(DetailView):
     model = SecondDummyModel
-    template_name = 'dummy_app/dummy.html'
+    template_name = '/dummy_app/dummy.html'
 
     def get_context_data(self, **kwargs):
-        user = authenticate(username='user', password='pass')
+        user = authenticate(username='rana', password='pass')
         if user is not None:
             login(self.request, user)
         context = super(SecondDummyDetailView, self).get_context_data(**kwargs)

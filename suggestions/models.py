@@ -37,11 +37,7 @@ class ObjectViewDictionary(models.Model):
 
 class DummyModel(models.Model):
     name = models.CharField(max_length=100)
-    suggestions = GenericRelation(ObjectViewDictionary)
-    view = GenericRelation(ObjectView)
 
 
 class SecondDummyModel(models.Model):
     name = models.CharField(max_length=100)
-    suggestions = GenericRelation(ObjectViewDictionary)
-    view = GenericRelation(ObjectView)
