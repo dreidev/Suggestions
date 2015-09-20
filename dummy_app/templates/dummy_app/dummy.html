@@ -6,7 +6,7 @@
 <body>
 {{ object.id }}
 {% for sug in suggestions %}
-	{{ sug }}
+	{{ sug.visited_before_object.name }}
 {% endfor %}
 </body>
 </html>
