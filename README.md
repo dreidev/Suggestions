@@ -80,12 +80,6 @@ from suggestions.views import update_suggestions_dictionary, get_suggestions
 ###Step 2
 Continuing in `views.py`, you'll need to update the dictionary we talked about in the example above.
 
-#####For `ClassBasedViews`:
-You'll need to do the following in the `DetailView` of say, model Blog, either in the `get` or `get_context_data` method.
-
-#####For `FunctionBasedViews`:
-Do the following in the function responsible for rendering the template where you view the details of a certain Blog post.
-
 ```python
 update_suggestions_dictionary(request, self.object)
 suggestions = get_suggestions(self.object)
@@ -95,6 +89,12 @@ However, `update_suggestions_dictionary` will only work with authenticated users
 
 * The `self.object` is for example the blog post object.
 * You'll need to either add `suggestions` to the context dictionary or return it.
+
+#####For `ClassBasedViews`:
+You'll need to do this in the `DetailView` of say, model Blog, either in the `get` or `get_context_data` method.
+
+#####For `FunctionBasedViews`:
+Do this in the function responsible for rendering the template where you view the details of a certain Blog post.
 
 
 ###Step 3

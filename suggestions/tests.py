@@ -31,7 +31,7 @@ class SuggestionsTestCase(TestCase):
             reverse('dummy-detail', kwargs={'pk': 2}))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ObjectView.objects.all().count(), init_view_count + 2)
-        self.assertEqual(ObjectViewDictionary.objects.all().count(), 2)
+        self.assertEqual(ObjectViewDictionary.objects.all().count(), 1)
 
     def test_ensure_dictionary_updated(self):
         init_view_count = ObjectView.objects.all().count()
@@ -42,11 +42,11 @@ class SuggestionsTestCase(TestCase):
             reverse('dummy-detail', kwargs={'pk': 2}))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(ObjectView.objects.all().count(), init_view_count + 2)
-        self.assertEqual(ObjectViewDictionary.objects.all().count(), 2)
+        self.assertEqual(ObjectViewDictionary.objects.all().count(), 1)
         response = self.client.get(
             reverse('dummy-detail', kwargs={'pk': 2}))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(ObjectViewDictionary.objects.all().count(), 2)
+        self.assertEqual(ObjectViewDictionary.objects.all().count(), 1)
         view_count = ObjectViewDictionary.objects.get(
             current_object_id=2).visits
         self.assertEqual(view_count, 2)

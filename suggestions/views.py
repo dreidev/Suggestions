@@ -6,9 +6,9 @@ def update_suggestions_dictionary(request, object):
     """
     Updates the suggestions' dictionary for an object upon visiting its page
     """
-    content_type = ContentType.objects.get_for_model(type(object))
     if request.user.is_authenticated():
         user = request.user
+        content_type = ContentType.objects.get_for_model(type(object))
         try:
             # Check if the user has visited this page before
             ObjectView.objects.get(
@@ -17,6 +17,7 @@ def update_suggestions_dictionary(request, object):
             ObjectView.objects.create(user=user, content_object=object)
         # Get a list of all the objects a user has visited
         viewed = ObjectView.objects.filter(user=user)
+
     else:
         update_dict_for_guests(request, object, content_type)
         return
