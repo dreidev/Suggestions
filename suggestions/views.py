@@ -17,36 +17,72 @@ def update_suggestions_dictionary(request, object):
             ObjectView.objects.create(user=user, content_object=object)
         # Get a list of all the objects a user has visited
         viewed = ObjectView.objects.filter(user=user)
-        if viewed:
-            for obj in viewed:
-                if not exists_in_dictionary(obj, obj.content_type, object, content_type, True):
+    else:
+        update_dict_for_guests(request, object, content_type)
+        return
+
+    if viewed:
+        for obj in viewed:
+            if content_type == obj.content_type:
+                if not exists_in_dictionary(object,
+                                            content_type,
+                                            obj, True):
                     # Create an entry if it's non existent
                     if object.id != obj.object_id:
-                        if content_type == obj.content_type:
-                            ObjectViewDictionary.objects.create(
-                                current_object=object,
-                                visited_before_object=obj.content_object)
-                        if not exists_in_dictionary(obj, obj.content_type, object, content_type, False):
+                        ObjectViewDictionary.objects.create(
+                            current_object=object,
+                            visited_before_object=obj.content_object)
+                        if not exists_in_dictionary(obj,
+                                                    obj.content_type,
+                                                    object, False):
                             ObjectViewDictionary.objects.create(
                                 current_object=obj.content_object,
                                 visited_before_object=object)
-
-    # else:
-    #     try:
-    #         visited = request.session['visited']
-    #     except:
-    #         visited = []
-    #         request.session = visited
     return
 
 
-def exists_in_dictionary(object, content_type, obj, obj_content_type, update):
+def update_dict_for_guests(request, object, content_type):
+    try:
+        viewed = request.session['viewed']
+        viewed_ct = request.session['viewed_ct']
+    except:
+        viewed = []
+        viewed_ct = []
+        request.session['viewed'] = viewed
+        request.session['viewed_ct'] = viewed_ct
+    if object.id not in viewed:
+        viewed.append(object.id)
+        viewed_ct.append((object.id, content_type))
+
+    for obj_id, obj_content_type in viewed_ct:
+        if obj_content_type == content_type:
+            ct = ContentType.objects.get_for_id(obj_content_type)
+            obj = ct.get_object_for_this_type(pk=obj_id)
+            if not exists_in_dictionary(object,
+                                        content_type,
+                                        obj, True):
+                # Create an entry if it's non existent
+                if object.id != obj.object_id:
+                    if content_type == obj.content_type:
+                        ObjectViewDictionary.objects.create(
+                            current_object=object,
+                            visited_before_object=obj)
+                    if not exists_in_dictionary(obj,
+                                                content_type,
+                                                object, False):
+                        ObjectViewDictionary.objects.create(
+                            current_object=obj,
+                            visited_before_object=object)
+    return
+
+
+def exists_in_dictionary(object, content_type, obj, update):
     try:
         visited = ObjectViewDictionary.objects.get(
                 current_object_id=object.id,
                 current_content_type=content_type,
                 visited_before_object_id=obj.object_id,
-                visited_before_content_type=obj_content_type)
+                visited_before_content_type=content_type)
         if update:
             count = visited.visits + 1
             visited.visits = count
