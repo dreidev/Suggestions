@@ -21,7 +21,7 @@ class DummyDetailView(DetailView):
 
 class SecondDummyDetailView(DetailView):
     model = SecondDummyModel
-    template_name = '/dummy_app/dummy.html'
+    template_name = 'dummy_app/dummy.html'
 
     def get_context_data(self, **kwargs):
         user = authenticate(username='rana', password='pass')
