@@ -1,10 +1,10 @@
-#`django-suggestions` Suggestions
+#`suggestions` Suggestions
 
 [![Build Status](https://travis-ci.org/dreidev/Suggestions.svg?branch=ReadMe)](https://travis-ci.org/dreidev/Suggestions)
 
 [![Coverage Status](https://coveralls.io/repos/dreidev/Suggestions/badge.svg?branch=HEAD&service=github)](https://coveralls.io/github/dreidev/Suggestions?branch=HEAD)
 
-`django-suggestions` is a suggestions application for Django-powered websites.
+`suggestions` is a suggestions application for Django-powered websites.
 
 > Suggestions can be added to any model's page in your application and it can help a user to discover other related pages they might find interesting based on what other users have viewed.
 
@@ -27,7 +27,7 @@ Now User2 will get a suggestion to visit blog post (a), this is due to the fact 
 
 Installation is available via `pip`
 
-`$ pip install django-suggestions`
+`$ pip install suggestions`
 
 or via source on github
 

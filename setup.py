@@ -3,7 +3,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 setup(
-    name='django-suggestions',
+    name='suggestions',
     version='1.0.1.dev1',
     author=u'DREIDEV',
     author_email='info@dreidev.com',
